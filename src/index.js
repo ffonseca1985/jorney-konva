@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import {render} from 'react-dom'
+import App from './components/app'
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+render(<App/>, document.getElementById('root'))
+
+
+// var layer = new Konva.Layer()
+
+// var rect = new Konva.Rect({
+//     draggable: true,
+//     x: state.stage.content.offsetHeight/2,
+//     y: state.stage.content.offsetHeight/2,
+//     fill: 'black',
+//     width: 50,
+//     height: 50
+// })
+
+//  layer.add(rect)
+//  state.stage.add(layer)
+
+//  layer.draw()
