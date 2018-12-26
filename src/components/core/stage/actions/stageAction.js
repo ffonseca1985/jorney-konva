@@ -10,8 +10,9 @@ const changeScalaStage = (scala) => ({
 const createStage = (stage) => ({
     type: actionTypeConstant.create_stage,
     stage,
-    load = () => {
-        eventEmiter(this.stage)
+    load: () => {
+        if (stage != undefined)
+            eventEmiter(stage)
     }
 })
 
@@ -28,7 +29,6 @@ const addShape = (shape) => ({
 const drawShape = () => ({
     type:actionTypeConstant.draw_shape
 })
-
 
 export {changeScalaStage, createStage, addLayer, addShape, drawShape}
 

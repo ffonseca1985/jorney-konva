@@ -1,19 +1,17 @@
 
-import CirculeComponent from '../../../community/menu'
 import InterationsClientStage from '../../../community/stage/interations/interationsClientStage'
 
 var eventEmiter = (stage) => {
 
-    stage.on('mouseOver', function (evt) {
-
+    console.log(stage)
+    stage.on('mouseover', function (evt) {
     })
 
-    stage.on('mouseDown', function (evt) {
+    stage.on('mousedown', function (evt) {
         InterationsClientStage.loadShapes(evt)
     })
 
-    stage.on('mouseMove', function (evt) {
-        
+    stage.on('mousemove', function (evt) {
     })
 }
 

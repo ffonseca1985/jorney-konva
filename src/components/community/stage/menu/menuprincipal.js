@@ -1,17 +1,20 @@
-import CircleComponent from '../../circle/circle' 
+import CircleManager from '../../circle/circle' 
 import { Circle } from 'konva';
 
 class MenuPrincipal {
 
-    shapes = [];
+    constructor(){
+        this.shapes =new Array();
+    } 
+    
 
     get shapes(){
         return this.shapes
     }
 
     static createCircle(text){
-        var cicle = new CircleComponent(text)
-        this.shapes.push(Circle)
+        var circle = new CircleManager().create(text)
+        //this.shapes.push(circle)
     }
 
     static createInit(){

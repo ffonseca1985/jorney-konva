@@ -20,17 +20,14 @@ var stageReducer = function(state = initialState, action) {
         case actionTypeConstant.change_scala:
             state.scale = action.scale
             break     
-        case actionTypeConstant.create_layer:
-            state.stage.add(action.layer)
-            break    
         case actionTypeConstant.save_stage:
              state.text = state.toJSON()
              break     
         case  actionTypeConstant.draw_shape:
-             state.stage.find('Layer')[0].add(action.shape)
+             state.stage.find('Layer')[0].draw()
              break    
         case  actionTypeConstant.add_shape:
-             state.stage.find('Layer')[0].draw()
+              state.stage.find('Layer')[0].add(action.shape)
              break
         case actionTypeConstant.add_layer:
             state.stage.add(action.layer)

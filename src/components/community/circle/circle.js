@@ -3,30 +3,31 @@ import Konva from 'konva'
 import ShapeBase from '../../core/shape/shapeBase'
 import eventEmiter from './events/eventEmiter'
 
-class CircleComponent extends ShapeBase{
+class CircleManager extends ShapeBase{
 
-    radius = 10
+    radius = 35
     fill = '#808080'
-    stroke = '#ffffff'
+    stroke = 'Black'
    
-    constructor(text){
-        this = super.create(Konva.Circle, this.createConfiguration())
-        this.load(text, eventEmiter)
+    create(text){
+        var instance = super.create(Konva.Circle, this.createConfiguration(), text)
+        this.load(text, instance, eventEmiter)
+        return instance
     }
 
     createConfiguration(){
         
-        self = this
+        var self = this
 
-        return configInitialState = {
+        return  {
             radius: self.radius,
             fill: self.fill,
             stroke: self.stroke,
-            dragrable: self.dragrable,
+            draggable: self.draggable,
             x: self.x,  
             y: self.y
         }
     }
 }
 
-export default CircleComponent
+export default CircleManager

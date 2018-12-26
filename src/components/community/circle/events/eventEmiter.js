@@ -1,17 +1,23 @@
+import * as UtilStage from  '../../../../shared/state'
 
-var eventEmiter = (stage) => {
 
-    stage.on('mouseOver', function (evt) {
+var eventEmiter = (circle) => {
 
+    circle.on('mouseover', function (evt) {
+        this.setStrokeWidth(3);
+        UtilStage.drawShape()
     })
 
-    stage.on('mouseDown', function (evt) {
-
-
+    circle.on('mouseout', function (evt) {
+        this.setStrokeWidth(1);
+        UtilStage.drawShape()
     })
 
-    stage.on('mouseMove', function (evt) {
-        alert('testndo eventos')
+    circle.on('mousedown', function (evt) {
+    })
+
+    circle.on('mousemove', function (evt) {
+        
     })
 }
 
