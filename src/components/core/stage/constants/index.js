@@ -7,7 +7,9 @@ const actionTypeConstant = {
     save_stage: 'save_stage',
     add_layer: 'add_layer_stage',
     add_shape: 'add_shape_stage',
-    draw_shape: 'draw_shape_stage'
+    draw_shape: 'draw_shape_stage',
+    listenningOn: 'listenning-on-stage',
+    listenningOff: 'listenning-off-stage',
 }
 
 export {actionTypeConstant}

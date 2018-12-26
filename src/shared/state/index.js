@@ -1,6 +1,7 @@
 
 import store from './../../store'
-import { drawShape as drawShapeAction, addShape as addShapeAction } from '../../components/core/stage/actions/stageAction'
+import { drawShape as drawShapeAction, addShape as addShapeAction, listenningOffStage, listenningOnStage } from '../../components/core/stage/actions/stageAction'
+import { addCurrentSelectShape, removeCurrentSelectShape } from '../../components/core/shape/actions/shapeAction'
 
 var getState = function(){
 
@@ -25,8 +26,18 @@ var drawShape = function(){
     store.dispatch(drawShapeAction())
 }
 
-var addCurrentShape = function(){
+var addCurrentShape = function(shape){
+
+    var store  = getState().store
+    store.dispatch(addCurrentSelectShape(shape))
+    store.dispatch(listenningOffStage())
+}
+
+var removeCurrentShape = function(shape){
     
+    var store  = getState().store 
+    store.dispatch(removeCurrentSelectShape(shape))
+    store.dispatch(listenningOnStage())
 }
 
 var drawAndAddShape = function(shape){
@@ -35,4 +46,4 @@ var drawAndAddShape = function(shape){
     drawShape()
 }
 
-export { getState, addShape, drawAndAddShape, drawShape }
+export { getState, addShape, drawAndAddShape, drawShape, addCurrentShape, removeCurrentShape }

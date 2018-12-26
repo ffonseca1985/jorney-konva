@@ -29,6 +29,12 @@ var stageReducer = function(state = initialState, action) {
         case  actionTypeConstant.add_shape:
               state.stage.find('Layer')[0].add(action.shape)
              break
+        case actionTypeConstant.listenningOff:
+            state.setListening(false)
+            break
+        case actionTypeConstant.listenningOn:
+            state.setListening(true)
+            break         
         case actionTypeConstant.add_layer:
             state.stage.add(action.layer)
             break 

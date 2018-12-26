@@ -30,6 +30,14 @@ const drawShape = () => ({
     type:actionTypeConstant.draw_shape
 })
 
-export {changeScalaStage, createStage, addLayer, addShape, drawShape}
+const listenningOnStage = () => ({
+    type: actionTypeConstant.listenningOn
+}) 
+
+const listenningOffStage = () => ({
+    type: actionTypeConstant.listenningOff
+})
+
+export {changeScalaStage, createStage, addLayer, addShape, drawShape, listenningOnStage, listenningOffStage}
 
 
