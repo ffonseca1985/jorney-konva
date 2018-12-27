@@ -10,7 +10,8 @@ var getState = function(){
     return {
         store: store,     
         stage: states.stage.stage, // Kanvas
-        layer: states.layer.layer // Camadas e Agrupamentos
+        layer: states.layer.layer, // Camadas e Agrupamentos
+        state :states.stage
     }
 }
 

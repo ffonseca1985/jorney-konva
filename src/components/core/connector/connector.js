@@ -4,15 +4,13 @@ import eventEmiter from './events/eventEmiter'
 class Connector {
     
     constructor(initialconnection, finalConnection){
-        
-        this.arrow = null
-        
-        this.conexaoInitial = {
+                
+        this.initialconnection = {
             point: initialconnection.point,
-            shape: finalConnection.shape
+            shape: initialconnection.shape
         }
 
-        this.conexaoFinal = {
+        this.finalConnection = {
             point: finalConnection.point,
             shape: finalConnection.shape
         }
@@ -31,16 +29,6 @@ class Connector {
 
     getArrow(){
         return this.arrow
-    }
-
-    getPoints(){
-
-        var points = [this.initialconnection.point[0], this.initialconnection.point[1], this.finalConnection.point[0], this.finalConnection.point[1]];
-        return points
-    }
-
-    ajustPosition(pointX, pointY, shape = null){
-    
     }
 }
 

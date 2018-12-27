@@ -3,7 +3,8 @@ import { actionTypeConstant } from '../constants'
 
 var initialState = {
     text: null,
-    stage: null
+    stage: null,
+    hasEvent: true
 }
 /**
  * 
@@ -30,10 +31,10 @@ var stageReducer = function(state = initialState, action) {
               state.stage.find('Layer')[0].add(action.shape)
              break
         case actionTypeConstant.listenningOff:
-            state.setListening(false)
+            state.hasEvent = false
             break
         case actionTypeConstant.listenningOn:
-            state.setListening(true)
+            state.hasEvent = true
             break         
         case actionTypeConstant.add_layer:
             state.stage.add(action.layer)

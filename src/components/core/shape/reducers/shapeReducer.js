@@ -2,10 +2,10 @@
 import {actionTypeConstant} from '../constants'
 
 var initialState = {
-    currentShape = null
+    currentShape: null
 }
 
-var shapeReducer = function(state = null, action){
+var shapeReducer = function(state = initialState, action){
     switch  (action.type){
         case actionTypeConstant.addCurrentSelectShape:
             state.currentShape = action.shape

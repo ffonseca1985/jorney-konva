@@ -14,10 +14,10 @@ var eventEmiter = (circle) => {
     })
 
     circle.on('mousedown', function (evt) {
-       var result = window.prompt('o que desejas fazer?')
-       if (result == 1)
-       {
-       }
+       //var result = window.prompt('o que desejas fazer?')
+       //if (result == 1)
+       //{
+       //}
     })
 
     circle.on('mousemove', function (evt) {

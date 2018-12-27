@@ -1,15 +1,19 @@
 
 import {mouseCode, keyBoadCode} from '../../../../shared/constants/keyCodeConstant'
 import Menuprincipal from '../menu/menuprincipal'
+import * as UtilState from '../../../../shared/state/'
 
 class InterationsClientStage {
 
     static loadShapes(evt){
-        switch (evt.evt.button) {
 
+        if (!UtilState.getState().state.hasEvent)
+            return
+
+        switch (evt.evt.button) {
             case mouseCode.rigthButton:
                 
-                var result = window.prompt('o que vc quer Globalmente?', "");
+                var result = window.prompt('Qual componente deseja desenhar??', "");
                 if (result == 1) {
                     var nameComponente = window.prompt('Digite um nome para seu componente!', "");
                     Menuprincipal.createCircle(nameComponente);

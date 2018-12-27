@@ -1,10 +1,12 @@
 import Konva from 'konva'
 import * as UtilStage from '../../../shared/state'
+import { mouseCode } from '../../../shared/constants/keyCodeConstant'
+import Connector from '../connector/connector'
 
 class ShapeBase {
 
-    constructor(){
-        this.instance = {}
+    constructor() {
+        this.shape = {}
         this.x = window.innerWidth / 2
         this.y = window.innerHeight / 2
         this.fontSize = 12
@@ -15,14 +17,14 @@ class ShapeBase {
     }
 
     create(shape, config, text) {
-        this.instance = Object.create(shape.prototype);
-        instance.constructor(config)
-        return instance
+        this.shape = Object.create(shape.prototype);
+        this.shape.constructor(config)
+        return this.shape
     }
 
-    clearConnector(){
-        this.instance.connector = {}
-    }    
+    clearConnector() {
+        this.shape.connector = {}
+    }
 
     load(text, instance, eventEmiter) {
         this.drawAndAddShape(instance)
@@ -35,19 +37,49 @@ class ShapeBase {
 
         var self = this
         eventEmiter(instance);
+
         instance.on('mousedown mouseover mouseout mouseup mousemove', function (evt) {
             self.textShape.setX(this.getX() - 17)
             self.textShape.setY(this.getY() - 8)
             UtilStage.drawShape()
         })
 
-        instance.on('mouseover', function(evt){
-            UtilStage.addCurrentShape(self.instance)
+        instance.on('mouseout', function (evt) {
+            UtilStage.removeCurrentShape(self.shape)
         })
 
-        instance.on('mouseout', function(evt){
-            UtilStage.removeCurrentShape(self.instance)
+        instance.on('mousedown', function (evt) {
+            UtilStage.addCurrentShape(self.shape)
+            self.connect(evt.evt, self.shape)
         })
+    }
+
+    connect(evt, shape) {
+
+        UtilStage.addCurrentShape(shape)
+
+        if (evt == null || evt == undefined)
+            return;
+
+        if (evt.button != mouseCode.rigthButton)
+            return;
+
+        var result = window.prompt('o que deseja executar?')
+
+        if (result == 1) {
+            var initialConnection = {
+                point: [shape.getX(), shape.getY()],
+                shape: shape
+            }
+
+            var finalConnection = {
+                point: [evt.pageX, evt.pageY],
+                shape: null
+            }
+
+            this.shape.connector = new Connector(initialConnection, finalConnection)
+            UtilStage.drawAndAddShape(this.shape.connector.getArrow())
+        }
     }
 
     drawAndAddShape(instance) {
@@ -71,6 +103,7 @@ class ShapeBase {
             text: text
         })
 
+        this.textShape.setListening(false)
         UtilStage.drawAndAddShape(this.textShape)
     }
 
