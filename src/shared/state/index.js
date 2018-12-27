@@ -11,8 +11,25 @@ var getState = function(){
         store: store,     
         stage: states.stage.stage, // Kanvas
         layer: states.layer.layer, // Camadas e Agrupamentos
+        currentShapeSelected: states.currentShapeSelected.currentShape,
         state :states.stage
     }
+}
+
+var getCurrentShapeSelected = function(){
+    
+    var shape = getState().currentShapeSelected
+    return shape 
+}
+
+var isShapeSelected = function(){
+    return getCurrentShapeSelected() != null
+}
+
+var getStage = function (){
+
+    var stage = getState().stage
+    return stage
 }
 
 var addShape = function(shape){
@@ -47,4 +64,6 @@ var drawAndAddShape = function(shape){
     drawShape()
 }
 
-export { getState, addShape, drawAndAddShape, drawShape, addCurrentShape, removeCurrentShape }
+export { getState, getStage, addShape, drawAndAddShape, drawShape, 
+         addCurrentShape, removeCurrentShape, getCurrentShapeSelected,
+         isShapeSelected }
