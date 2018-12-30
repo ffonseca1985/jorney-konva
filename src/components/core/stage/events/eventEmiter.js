@@ -3,7 +3,6 @@ import InterationsClientStage from '../../../community/stage/interations/interat
 
 var eventEmiter = (stage) => {
 
-    console.log(stage)
     stage.on('mouseover', function (evt) {
     })
 

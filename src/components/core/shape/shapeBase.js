@@ -48,7 +48,7 @@ class ShapeBase {
             UtilStage.removeCurrentShape(self.shape)
         })
 
-        instance.on('mousedown', function (evt) {
+        instance.on('mousedown click mousemove', function (evt) {
             UtilStage.addCurrentShape(self.shape)
             self.connect(evt.evt, self.shape)
         })

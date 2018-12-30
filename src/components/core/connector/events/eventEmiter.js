@@ -5,8 +5,7 @@ import { mouseCode } from '../../../../shared/constants/keyCodeConstant'
 var eventEmiter = (connector) => {
 
     getStage().on('mousemove', function (evt) {
-
-        ajustFinalPoint(evt.evt.pageX, evt.evt.pageY)
+        ajustFinalPoint(evt.evt.offsetX, evt.evt.offsetY)
     })
 
     connector.initialconnection.shape.on('dragmove', function(evt){
@@ -15,15 +14,15 @@ var eventEmiter = (connector) => {
 
     connector.arrow.on('mousedown', function (evt) {
 
-        if (evt.evt.button == mouseCode.rigthButton)
+        if (evt.evt.button === mouseCode.rigthButton)
             this.destroy()
     })
 
     connector.arrow.on('pointsChange', function () {
 
         var shape = getCurrentShapeSelected()
-
-        if (isShapeSelected() && shape != connector.initialconnection.shape) {
+        
+        if (isShapeSelected() && shape !== connector.initialconnection.shape) {
             connectFinalConnection(shape)
         }
     })
